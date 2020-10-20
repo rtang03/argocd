@@ -4,18 +4,14 @@
 case $1 in
   show*)
     set -x
+    pwd
     exec /usr/local/bin/helm.bin $@
     set +x
     ;;
   *)
     set -x
+    pwd
     exec /usr/local/bin/helm.bin secrets $@
     set +x
-    if [ -f "secrets.yaml" ]
-    then
-      set -x
-      sops -e -i secrets.yaml
-      set +x
-    fi
     ;;
 esac
