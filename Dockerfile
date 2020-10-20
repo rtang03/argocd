@@ -10,6 +10,8 @@ ENV PATH=/home/argocd/google-cloud-sdk/bin:$PATH \
 
 USER root
 COPY helm-wrapper /usr/local/bin/
+COPY .sops.yaml /home/argocd
+
 RUN apt-get update && \
     apt-get install -y curl gpg wget ca-certificates zip && \
     apt-get clean && \
