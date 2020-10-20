@@ -13,7 +13,7 @@ WORKDIR /
 USER root
 COPY helm-wrapper /usr/local/bin/
 RUN apt-get update && \
-    apt-get install -y curl gpg wget ca-certificates && \
+    apt-get install -y curl gpg wget ca-certificates tar && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     wget https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip && unzip google-cloud-sdk.zip && rm google-cloud-sdk.zip \

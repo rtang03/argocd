@@ -4,7 +4,11 @@ Argo CD Custom Image for adding helm-secret plugin
 ```shell script
 # naming convention v[Argo CD origin release]-rel.[revision number]
 git tag v1.7.7-rel.1
-git push origin v1.7.7-rel.1 
+git push origin v1.7.7-rel.1
+
+# Delete tag
+git tag -d v1.7.7-rel.1
+git push origin --delete v1.7.7-rel.1
 ```
 
 ### External Reference
