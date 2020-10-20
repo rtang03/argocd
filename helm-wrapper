@@ -15,9 +15,13 @@
 # helm.bin is the original helm binary
 case $1 in
   show*)
+    set -x
     exec /usr/local/bin/helm.bin $@
+    set +x
     ;;
   *)
+    set -x
     exec /usr/local/bin/helm.bin secrets $@
+    set +x
     ;;
 esac
