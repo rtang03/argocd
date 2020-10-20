@@ -5,6 +5,9 @@ case $1 in
   show*)
     exec /usr/local/bin/helm.bin $@
     ;;
+  template*)
+    exec /usr/local/bin/helm.bin secrets $@ | head -n -1 -
+    ;;
   *)
     exec /usr/local/bin/helm.bin secrets $@
     ;;
