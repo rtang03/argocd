@@ -4,13 +4,13 @@
 case $1 in
   show*)
     set -x
-    pwd
+    echo "======helm $1 $2"
     exec /usr/local/bin/helm.bin $@
     set +x
     ;;
   *)
     set -x
-    pwd
+    echo "======helm secret $1 $2"
     exec /usr/local/bin/helm.bin secrets $@
     set +x
     ;;
