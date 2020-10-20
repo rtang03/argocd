@@ -12,8 +12,12 @@
 #     gpg --quiet --import ${GPG_KEY}
 # fi
 
-#export GOOGLE_APPLICATION_CREDENTIALS=/app/config/gcp/kms-service-account.json
-#gcloud auth application-default login
-
 # helm.bin is the original helm binary
-exec /usr/local/bin/helm.bin secrets $@
+case $1 in
+  show*)
+    exec /usr/local/bin/helm.bin $@
+    ;;
+  *)
+    exec /usr/local/bin/helm.bin secrets $@
+    ;;
+esac
