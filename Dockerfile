@@ -4,12 +4,12 @@ LABEL org.opencontainers.image.source https://github.com/rtang03/argocd
 
 ARG SOPS_VERSION="v3.6.1"
 ARG HELM_SECRETS_VERSION="2.0.2"
-ENV PATH=/google-cloud-sdk/bin:$PATH \
+ENV PATH=/home/argocd/google-cloud-sdk/bin:$PATH \
     CLOUDSDK_PYTHON_SITEPACKAGES=1
 
 USER root
 COPY helm-wrapper /usr/local/bin/
-RUN apt-get update && \
+RUN pwd && apt-get update && \
     apt-get install -y curl gpg wget ca-certificates zip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
