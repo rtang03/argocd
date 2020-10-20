@@ -1,17 +1,5 @@
 #! /bin/sh
 
-# GPG_PRIVATE_KEY_FILE='/app/config/gpg/privkey.asc'
-# if [ -f "${GPG_PRIVATE_KEY_FILE}" ]
-# then
-# 	gpg --import "${GPG_PRIVATE_KEY_FILE}"
-# fi
-
-# GPG_KEY='/home/argocd/gpg/gpg.asc'
-# if [ -f ${GPG_KEY} ]
-# then
-#     gpg --quiet --import ${GPG_KEY}
-# fi
-
 # helm.bin is the original helm binary
 case $1 in
   show*)
@@ -23,5 +11,11 @@ case $1 in
     set -x
     exec /usr/local/bin/helm.bin secrets $@
     set +x
+    if [ -f "secrets.yaml" ]
+    then
+      set -x
+      sops -e -i secrets.yaml
+      set +x
+    fi
     ;;
 esac
