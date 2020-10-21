@@ -6,7 +6,8 @@ case $1 in
     exec /usr/local/bin/helm.bin $@
     ;;
   template*)
-    exec /usr/local/bin/helm.bin secrets $@ | head -n -1 -
+    exec /usr/local/bin/helm.bin secrets $@ | grep -ve '^removed .*$'
+    # exec /usr/local/bin/helm.bin secrets $@ | head -n -1 -
     ;;
   *)
     exec /usr/local/bin/helm.bin secrets $@
